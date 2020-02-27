@@ -42,22 +42,7 @@ function getFirstIpAddress(cidrStr, callback) {
   // Node.js convention is to pass error data as the first argument to a callback.
   // The IAP convention is to pass returned data as the first argument and error
   // data as the second argument to the callback function.
-
-  if (firstIpAddress==null) {
-    var ip_addresses = {
-      "ipv4": null,
-      "ipv6": null
-    }
-  }
-  else {
-    var secondIpAddress = getIpv4MappedIpv6Address(firstIpAddress);
-    console.log("IPV6 address is here : " + secondIpAddress)
-    var ip_addresses = {
-        "ipv4": firstIpAddress,
-        "ipv6": secondIpAddress
-  }
-}
-  return callback(JSON.stringify(ip_addresses), callbackError);
+  return callback(firstIpAddress, callbackError);
 }
 
 /**
